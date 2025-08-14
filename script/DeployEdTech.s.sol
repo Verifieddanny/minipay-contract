@@ -26,15 +26,7 @@ contract DeployEdTech is Script {
         ContentRegistry reg = new ContentRegistry(admin);
 
         uint64 initialEnd = uint64(block.timestamp + epochDuration);
-        EduRewards rewards = new EduRewards(
-            admin,
-            token,
-            reg,
-            initialEnd,
-            emissionPerEpoch,
-            minStake,
-            lockPeriod
-        );
+        EduRewards rewards = new EduRewards(admin, token, reg, initialEnd, emissionPerEpoch, minStake, lockPeriod);
 
         // grant minter, call is from admin EOA because we are inside startBroadcast(pk)
         token.grantRole(token.MINTER_ROLE(), address(rewards));

@@ -12,11 +12,7 @@ import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 contract EduToken is ERC20, ERC20Burnable, AccessControl {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
-    constructor(
-        string memory _name,
-        string memory _symbol,
-        address admin
-    ) ERC20(_name, _symbol) {
+    constructor(string memory _name, string memory _symbol, address admin) ERC20(_name, _symbol) {
         _grantRole(DEFAULT_ADMIN_ROLE, admin);
         _grantRole(MINTER_ROLE, admin);
     }
